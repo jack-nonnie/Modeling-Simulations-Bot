@@ -29,6 +29,15 @@ class Bot {
         }
         return null;
     }
+    static banLst(message, lst) {
+        const users = message.user_id;
+        if (lst.includes(users)) {
+            console.log("remove user");
+        } else {
+            lst.push(users);
+        }
+        return lst;
+    }
 
     static messageStats(message) {
         return [message.name, message.text.length];

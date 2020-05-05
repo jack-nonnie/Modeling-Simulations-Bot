@@ -5,6 +5,7 @@ const Bot = require("./bot");
 var counter = 0;
 var lastMessUser = "";
 var userCountLst = [];
+var warnedUsers = [];
 
 class Server {
     constructor(router, devMode, port) {
@@ -53,6 +54,7 @@ class Server {
         const curseResponse = Bot.curseWordsResponse(requestMessage);
         if (curseResponse) {
             Bot.sendMessage(curseResponse);
+            warnedUsers = Bot.banLst(requestMessage, warnedUsers);
         }
         const welcome = Bot.welcome(requestMessage);
         if (welcome) {
@@ -71,6 +73,7 @@ class Server {
                 lastMessUser +
                     " please stop spamming the chat if you continue to do so you will be removed from the chat"
             );
+            warnedUsers = Bot.banLst(requestMessage, warnedUsers);
         }
         userCountLst = Bot.messageCounter(requestMessage, userCountLst);
         const messUserCounter = Bot.userMessageStats(
