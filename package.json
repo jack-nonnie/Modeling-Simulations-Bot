@@ -18,7 +18,7 @@
     "winston": "2.2.0"
   },
   "devDependencies": {
-    "localtunnel": "1.8.1",
+    "localtunnel": "1.9.2",
     "promptly": "2.1.0"
   },
   "homepage": "https://github.com/acmatuc/groupme-bot-starter",
